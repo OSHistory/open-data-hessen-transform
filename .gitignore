@@ -1,0 +1,9 @@
+neu_anspach
+waldeck
+data/
+
+config.yaml
+*gpkg
+*qgz
+
+test-*sh
