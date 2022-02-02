@@ -1,0 +1,34 @@
+include:
+  # Labeling der Flurstücke)
+  - AP_PTO
+  - AX_BesondereFlurstuecksgrenze
+  - AX_Fliessgewaesser
+  - AX_Flurstueck
+  - AX_Friedhof
+  - AX_Gebaeude
+  # Messpunkte an Gebäuden
+  - AX_PunktortAG
+  # Messpunkte, Zweck unklar
+  - AX_PunktortAU
+  # Messpunkte Flurstücke
+  - AX_PunktortTA
+  - AX_SonstigesBauwerkOderSonstigeEinrichtung
+  - AX_StehendesGewaesser
+  - AX_Strassenverkehr
+  - AX_Turm
+  - AX_Weg
+  #Ohne Geometrien, aber wichtige Attribute
+  # wird als Hausnummern angezeigt
+  - AX_GeoreferenzierteGebaeudeadresse
+  # löst gemarkungsnummer auf
+  - AX_Gemarkung
+  # löst Fluren auf
+  - AX_GemarkungsteilFlur
+  # löst Grenzpunkte auf
+  - AX_Grenzpunkt
+  # löst Flurnamen auf
+  - AX_LagebezeichnungKatalogeintrag
+  # geringe Anzahl
+  - AX_Sicherungspunkt
+  # deutlich größere Anzahl
+  - AX_SonstigerVermessungspunkt
