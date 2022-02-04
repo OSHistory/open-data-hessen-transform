@@ -6,8 +6,6 @@ import subprocess
 
 import time
 
-from cv2 import merge
-
 ap = argparse.ArgumentParser()
 
 ap.add_argument(dest="directory")

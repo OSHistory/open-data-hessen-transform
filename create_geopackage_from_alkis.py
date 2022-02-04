@@ -8,8 +8,6 @@ import sys
 
 import time
 
-from cv2 import merge
-
 ap = argparse.ArgumentParser()
 
 ap.add_argument("-i", "--input-file", required=True,
