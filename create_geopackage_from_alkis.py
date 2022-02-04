@@ -37,7 +37,6 @@ if os.path.exists(args.output) and not args.overwrite:
 if not os.path.exists(os.path.dirname(args.output)):
     os.makedirs(os.path.dirname(args.output))
 
-print(config)
 for layer_idx, layer in enumerate(config['include']):
     print(f"\tExporting {layer}")
     conversion_call = ["ogr2ogr", args.output,
