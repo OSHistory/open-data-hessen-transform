@@ -23,7 +23,6 @@ ap.add_argument("--no-cleanup", action="store_true")
 
 args = ap.parse_args()
 
-print(args)
 if not os.path.exists(args.config_file):
     print(f"Fatal: Config File ({args.config_file}) does not exist")
     sys.exit(1)

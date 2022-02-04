@@ -10,20 +10,22 @@ ap = argparse.ArgumentParser()
 
 ap.add_argument(dest="directory")
 ap.add_argument("-o", "--output",
-                help="Name des Auszugebenden GeoTIFFs (default: directory + .tif)")
+                help="Name of output GeoTIFF (default: directory + .tif)")
 ap.add_argument("--overwrite", action="store_true")
 ap.add_argument("--no-cleanup", action="store_true")
 
 
-TMP_DIR = os.path.join("/tmp/", str(time.time()).replace(".", "_"))
-print(TMP_DIR)
+if not os.path.exists("/tmp/"):
+    TMP_BASE = "tmp/"
+else:
+    TMP_BASE = "/tmp/"
+
+TMP_DIR = os.path.join(TMP_BASE, str(time.time()).replace(".", "_"))
 
 if not os.path.exists(TMP_DIR):
     os.mkdir(TMP_DIR)
 
 args = ap.parse_args()
-
-print(args)
 
 if args.output is None:
     out_file = os.path.split(args.directory.rstrip("/"))[1] + ".tif"
@@ -70,8 +72,8 @@ merge_command = [
     "-o", out_file,
 ]
 merge_command.extend(glob.glob(os.path.join(TMP_DIR, "*tif")))
-print(merge_command)
+
 subprocess.run(merge_command)
 
-print("STEP 3: Cleaning temporary directory")
+print("STEP 3: Cleaning temporary directory (TODO)")
 # TODO
