@@ -1,7 +1,6 @@
-neu_anspach
-waldeck
 data/
 
+tmp/
 config.yaml
 *gpkg
 *qgz
