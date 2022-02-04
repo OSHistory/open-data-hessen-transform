@@ -38,8 +38,16 @@ Unzip the downloaded file to a directory, then point the script there and specif
 python3 create_geotiff_from_directory.py path/to/your/unzipped/DGM/ -o path/to/your_geopackage.gpkg
 ```
 
+## Create GeoTIFFs from single jpg files 
+
 ## TODO:
 
+- add extent option to GeoTIFF creation 
+- Check extent of files before merging (if extent used)
 - Cleanup temporary files
 - Better ALKIS to geopackage conversion (use `-mapFieldType`)
-- DOP import script
+- Possibly use existing NAS Tools 
+- dop and DEM Scripts are essentially the same (except for the .xyz / .jpg part) -> should share most of the 
+    code base
+- move configuration options (like compression etc.) to `config.yaml`
+

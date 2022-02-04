@@ -69,11 +69,22 @@ for xyz_file in all_xyz_files:
 print("STEP 2: Merging temporary tif files")
 merge_command = [
     "gdal_merge.py",
+    "-co", "COMPRESS=PACKBITS",
     "-o", out_file,
 ]
 merge_command.extend(glob.glob(os.path.join(TMP_DIR, "*tif")))
 
 subprocess.run(merge_command)
+
+overview_command = ["gdaladdo",
+    "--config", "COMPRESS_OVERVIEW PACKBITS",
+    "--config", "INTERLEAVE_OVERVIEW PIXEL",
+    "-r", "average",
+    out_file,
+    "2", "4", "8", "16"
+]
+
+subprocess.run(overview_command)
 
 print("STEP 3: Cleaning temporary directory (TODO)")
 # TODO
