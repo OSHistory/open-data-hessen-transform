@@ -4,6 +4,7 @@ import glob
 import os
 import subprocess
 import sys
+import tempfile
 import time
 
 ap = argparse.ArgumentParser()
@@ -14,16 +15,7 @@ ap.add_argument("-o", "--output",
 ap.add_argument("--overwrite", action="store_true")
 ap.add_argument("--no-cleanup", action="store_true")
 
-
-if not os.path.exists("/tmp/"):
-    TMP_BASE = "tmp/"
-else:
-    TMP_BASE = "/tmp/"
-
-TMP_DIR = os.path.join(TMP_BASE, str(time.time()).replace(".", "_"))
-
-if not os.path.exists(TMP_DIR):
-    os.mkdir(TMP_DIR)
+TMP_DIR = tempfile.TemporaryDirectory(prefix="hessen_open_data_")
 
 args = ap.parse_args()
 
@@ -43,7 +35,7 @@ if not os.path.exists(os.path.dirname(out_file)):
 print("STEP 1: Merging jpg files (gdal_merge.py)")
 merge_command = [
     "gdal_merge.py",
-    "-co", "COMPRESS=JPEG", 
+    "-co", "COMPRESS=JPEG",
     "-co", "PHOTOMETRIC=YCBCR",
     "-co", "TILED=YES",
     "-o", out_file
@@ -56,9 +48,9 @@ subprocess.run(merge_command)
 print("Step 2: Generating overviews")
 gdaladdo_command = [
     "gdaladdo",
-    "--config", "COMPRESS_OVERVIEW JPEG",
-    "--config", "PHOTOMETRIC_OVERVIEW YCBCR",
-    "--config", "INTERLEAVE_OVERVIEW PIXEL",
+    "--config", "COMPRESS_OVERVIEW", "JPEG",
+    "--config", "PHOTOMETRIC_OVERVIEW", "YCBCR",
+    "--config", "INTERLEAVE_OVERVIEW", "PIXEL",
     "-r", "average",
     out_file,
     "2", "4", "8", "16"

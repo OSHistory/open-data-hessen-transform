@@ -8,6 +8,9 @@ import sys
 
 import time
 
+from common_defuns import read_config
+
+
 ap = argparse.ArgumentParser()
 
 ap.add_argument("-i", "--input-file", required=True,
@@ -23,12 +26,7 @@ ap.add_argument("--no-cleanup", action="store_true")
 
 args = ap.parse_args()
 
-if not os.path.exists(args.config_file):
-    print(f"Fatal: Config File ({args.config_file}) does not exist")
-    sys.exit(1)
-
-with open(args.config_file) as fh:
-    config = yaml.load(fh, Loader=yaml.FullLoader)
+config = read_config(args.config_file)
 
 if os.path.exists(args.output) and not args.overwrite:
     print("Fatal: File exists (use --overwrite)")

@@ -1,5 +1,6 @@
 data/
 
+common_defuns/__pycache__/
 tmp/
 config.yaml
 *gpkg
