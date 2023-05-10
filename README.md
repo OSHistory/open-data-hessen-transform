@@ -35,10 +35,16 @@ python3 create_geopackage_from_alkis.py \
 Unzip the downloaded file to a directory, then point the script there and specify an output Geopackage:
 
 ```bash
-python3 create_geotiff_from_directory.py path/to/your/unzipped/DGM/ -o path/to/your_geopackage.gpkg
+python3 create_geotiff_from_directory.py path/to/your/unzipped/DGM/ -o path/to/xyz_dgm.tif
 ```
 
 ## Create GeoTIFFs from single jpg files
+
+Unzip the downloaded file to a directory, then point the script there and specify an output Geopackage:
+
+```bash
+python3 create_geotiff_from_directory.py path/to/your/unzipped/DOP/ -o path/to/xyz_dop.tif
+```
 
 ## TODO:
 
